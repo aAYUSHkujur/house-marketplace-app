@@ -31,7 +31,7 @@ function Profile() {
         });
 
         // Update in firestore
-        const userRef = doc(db, "user", auth.currentUser.uid);
+        const userRef = doc(db, "users", auth.currentUser.uid);
         await updateDoc(userRef, {
           name,
         });
