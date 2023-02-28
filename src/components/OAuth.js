@@ -1,9 +1,9 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
-import { Toast } from "react-toastify";
+import { toast, Toast } from "react-toastify";
 import googleIcon from "../assets/svg/googleIcon.svg";
 import { async } from "@firebase/util";
 
@@ -24,8 +24,16 @@ function OAuth() {
 
       // If user doesn't exit , create user
       if (!docSnap.exists()) {
+        await setDoc(doc(db, "users", user.uid), {
+          name: user.displayName,
+          email: user.email,
+          timestamp: serverTimestamp(),
+        });
       }
-    } catch (error) {}
+      navigate("/");
+    } catch (error) {
+      toast.error("Could not authorize with Google");
+    }
   };
 
   return (
