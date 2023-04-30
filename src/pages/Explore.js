@@ -3,6 +3,7 @@ import rentCategoryImage from "../assets/jpg/rentCategoryImage.jpg";
 import sellCategoryImage from "../assets/jpg/sellCategoryImage.jpg";
 
 import React from "react";
+import Slider from "../components/Slider";
 
 function Explore() {
   return (
@@ -12,7 +13,7 @@ function Explore() {
       </header>
 
       <main>
-        {/* Slider */}
+        <Slider />
 
         <p className="exploreCategoryHeading">Categories</p>
         <div className="exploreCategories">

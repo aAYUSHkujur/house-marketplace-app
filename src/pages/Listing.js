@@ -2,17 +2,22 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.css";
+// import { Autoplay, Navigation, Pagination, Scrollbar, A11y } from "swiper";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/swiper-bundle.min.css";
+// import function to register Swiper custom elements
+import { register } from "swiper/element/bundle";
+
 import { getDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { db } from "../firebase.config";
 import Spinner from "../components/Spinner";
 import shareIcon from "../assets/svg/shareIcon.svg";
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+// SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 function Listing() {
+  // register Swiper custom elements
+  register();
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
   const [shareLinkCopied, setShareLinkCopied] = useState(false);
@@ -39,25 +44,41 @@ function Listing() {
   if (loading) {
     return <Spinner />;
   }
+
   return (
     <main>
-      <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+      <swiper-container
+        className="mySwiper"
+        centeredSlides={true}
+        navigation="true"
+        spaceBetween={10}
         slidesPerView={1}
-        pagination={{ clickable: true }}
+        pagination="true"
+        scrollbar={{ draggable: true }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
       >
         {listing.imgUrls.map((url, index) => (
-          <SwiperSlide key={index}>
+          <swiper-slide key={index}>
             <div
               style={{
-                background: `url(${listing?.imgUrls[index]}) center no-repeat`,
+                background: `url(${url}) center no-repeat`,
                 backgroundSize: "cover",
               }}
               className="swiperSlideDiv"
             ></div>
-          </SwiperSlide>
+          </swiper-slide>
         ))}
-      </Swiper>
+
+        {/* {listing.imgUrls.map((url, index) => (
+          <swiper-slide key={index}>
+            <img src={url} alt={listing.name} className="swiperSlideDiv" />
+          </swiper-slide>
+        ))} */}
+      </swiper-container>
+
       <div
         className="shareIconDiv"
         onClick={() => {
