@@ -109,7 +109,7 @@ function Listing() {
         </p>
         {listing.offer && (
           <p className="discountPrice">
-            ${listing.regularPrice - listing.discountedPrice} discount
+            ₹{listing.regularPrice - listing.discountedPrice} discount
           </p>
         )}
 
