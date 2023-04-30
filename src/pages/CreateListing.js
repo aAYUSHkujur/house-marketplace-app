@@ -9,13 +9,13 @@ import {
 } from "firebase/storage";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
-import { resolvePath, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
-import { async } from "@firebase/util";
 
 function CreateListing() {
+  // eslint-disable-next-line
   const [geolocationEnabled, setGeolocationEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -68,6 +68,7 @@ function CreateListing() {
     return () => {
       isMounted.current = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMounted]);
 
   const onSubmit = async (e) => {
@@ -87,6 +88,7 @@ function CreateListing() {
     }
 
     let geolocation = {};
+    // eslint-disable-next-line no-unused-vars
     let location;
 
     if (geolocationEnabled) {
@@ -117,6 +119,8 @@ function CreateListing() {
                 break;
               case "running":
                 console.log("Upload is running");
+                break;
+              default:
                 break;
             }
           },

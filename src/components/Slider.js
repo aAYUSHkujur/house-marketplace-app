@@ -4,7 +4,6 @@ import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { register } from "swiper/element/bundle";
 import Spinner from "./Spinner";
-import Swiper from "swiper";
 
 function Slider() {
   // register Swiper custom elements
@@ -41,6 +40,10 @@ function Slider() {
     return <Spinner />;
   }
 
+  if (listings.length === 0) {
+    return <></>;
+  }
+
   return (
     listings && (
       <>
@@ -74,6 +77,5 @@ function Slider() {
 }
 
 export default Slider;
-
 
 //
