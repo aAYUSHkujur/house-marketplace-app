@@ -9,6 +9,7 @@ function Explore() {
   return (
     <div className="explore">
       <header>
+        <p className="topHeader">House-Market-Place</p>
         <p className="pageHeader">Explore</p>
       </header>
 
