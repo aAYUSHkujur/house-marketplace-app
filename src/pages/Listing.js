@@ -94,7 +94,7 @@ function Listing() {
       {shareLinkCopied && <p className="linkCopied">Link Copied!</p>}
       <div className="listingDetails">
         <p className="listingName">
-          {listing.name} - $
+          {listing.name} - ₹
           {listing.offer
             ? listing.discountedPrice
                 .toString()
