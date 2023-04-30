@@ -55,10 +55,7 @@ function Listing() {
         slidesPerView={1}
         pagination="true"
         scrollbar={{ draggable: true }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
+        data-swiper-autoplay="2000"
       >
         {listing.imgUrls.map((url, index) => (
           <swiper-slide key={index}>

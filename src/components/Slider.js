@@ -49,7 +49,12 @@ function Slider() {
       <>
         <p className="exploreHeading">Recommended</p>
 
-        <swiper-container slidesPerView={1} pagination={{ clickable: true }}>
+        <swiper-container
+          
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+        >
           {listings.map(({ data, id }) => (
             <swiper-slide
               key={id}
