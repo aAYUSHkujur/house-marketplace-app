@@ -156,6 +156,21 @@ button {
   margin-left: 60px;
 }
 
+/* @media (min-width: 536) {
+  .topHeader{
+    display: none;
+  }
+} */
+
+@media screen and (max-width: 768px) {
+  .topHeader{
+    display: none;
+  }
+  .header > img {
+    justify-content: center;
+  }
+}
+
 .pageHeader {
   font-size: 2rem;
   font-weight: 800;
