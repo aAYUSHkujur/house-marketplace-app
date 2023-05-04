@@ -3,12 +3,16 @@ import rentCategoryImage from "../assets/jpg/rentCategoryImage.jpg";
 import sellCategoryImage from "../assets/jpg/sellCategoryImage.jpg";
 import React from "react";
 import Slider from "../components/Slider";
+import logo from "../assets/logo/logo.png";
 
 function Explore() {
   return (
     <div className="explore">
       <header>
-        <p className="topHeader">House Market Place</p>
+        <div className="header">
+          <img src={logo} alt="logo" width={80} height={80} />
+          <p className="topHeader">House MarketPlace</p>
+        </div>
         <p className="pageHeader">Explore</p>
       </header>
 
